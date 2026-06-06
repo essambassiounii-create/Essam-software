@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+
+{% block title %}Essam Software - نحول أفكارك إلى برامج احترافية{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="hero-badge">
+                    <i class="fas fa-circle text-success" style="font-size:0.5rem;"></i>
+                    متاح للمشاريع الجديدة
+                </div>
+                <h1 class="hero-title">
+                    نحول <span class="highlight">أفكارك</span> إلى<br>برامج احترافية
+                </h1>
+                <p class="hero-desc">
+                    Essam Software شركة متخصصة في تطوير برامج سطح المكتب، تطبيقات الويب والجوال.
+                    نقدم حلولاً برمجية متكاملة تلبي احتياجات عملك بأعلى معايير الجودة.
+                </p>
+                <div class="hero-btns">
+                    <a href="/products/" class="btn-hero-primary">
+                        <i class="fas fa-th-large"></i> عرض البرامج
+                    </a>
+                    <a href="/contact/" class="btn-hero-outline">
+                        <i class="fas fa-paper-plane"></i> تواصل معنا
+                    </a>
+                </div>
+                <div class="d-flex align-items-center gap-4 mt-4" style="color:rgba(255,255,255,0.6); font-size:0.85rem;">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-success"></i> جودة مضمونة
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-success"></i> دعم فني مستمر
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-check-circle text-success"></i> تسليم في الوقت
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="hero-graphic">
+                    <div class="hero-sphere"></div>
+                    <div class="hero-code-card">
+                        <div class="code-header">
+                            <div class="code-dot code-dot-red"></div>
+                            <div class="code-dot code-dot-yellow"></div>
+                            <div class="code-dot code-dot-green"></div>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-comment"># Essam Software Solutions</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-keyword">class </span>
+                            <span class="code-func">EssamSoftware</span>
+                            <span style="color:#fff">:</span>
+                        </div>
+                        <div class="code-line" style="padding-right:20px;">
+                            <span class="code-func">name </span>
+                            <span style="color:#fff">= </span>
+                            <span class="code-string">"عصام سوفت وير"</span>
+                        </div>
+                        <div class="code-line" style="padding-right:20px;">
+                            <span class="code-func">products </span>
+                            <span style="color:#fff">= </span>
+                            <span class="code-number">{{ stats.products_count }}+</span>
+                        </div>
+                        <div class="code-line" style="padding-right:20px;">
+                            <span class="code-func">clients </span>
+                            <span style="color:#fff">= </span>
+                            <span class="code-number">{{ stats.clients_count }}+</span>
+                        </div>
+                        <div class="code-line" style="padding-right:20px;">
+                            <span class="code-keyword">def </span>
+                            <span class="code-func">build_your_dream</span>
+                            <span style="color:#fff">(idea):</span>
+                        </div>
+                        <div class="code-line" style="padding-right:40px;">
+                            <span class="code-keyword">return </span>
+                            <span class="code-string">"Professional Software"</span>
+                        </div>
+                        <div class="code-line mt-2">
+                            <span style="color:#48ca8b;">✓ </span>
+                            <span class="code-string">Ready for deployment!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-6 col-lg-3" data-aos="fade-up">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="stat-number counter-num" data-target="{{ stats.products_count }}">0</div>
+                    <div class="stat-label">برنامج منجز</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number counter-num" data-target="{{ stats.clients_count }}">0</div>
+                    <div class="stat-label">عميل راضٍ</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="stat-number counter-num" data-target="{{ stats.projects_count }}">0</div>
+                    <div class="stat-label">مشروع مكتمل</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-number counter-num" data-target="{{ stats.years_count }}">0</div>
+                    <div class="stat-label">سنوات خبرة</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-star"></i> لماذا نحن؟
+            </div>
+            <h2 class="section-title">ما يميز <span class="text-gradient">Essam Software</span></h2>
+            <p class="section-subtitle mx-auto">نقدم أفضل الحلول البرمجية بجودة عالية واحترافية تفوق التوقعات</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-medal"></i></div>
+                    <h5 class="feature-title">جودة لا تُضاهى</h5>
+                    <p class="feature-desc">نلتزم بأعلى معايير الجودة في كل مرحلة من مراحل التطوير، من التصميم حتى التسليم النهائي.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h5 class="feature-title">أداء سريع وفعّال</h5>
+                    <p class="feature-desc">برامجنا مُحسَّنة للأداء العالي وتعمل بكفاءة ممتازة على جميع الأجهزة والأنظمة.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h5 class="feature-title">أمان وموثوقية</h5>
+                    <p class="feature-desc">نضمن حماية بياناتك بأحدث تقنيات الأمان والتشفير، مع توافر تام وموثوقية عالية.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h5 class="feature-title">دعم فني 24/7</h5>
+                    <p class="feature-desc">فريق دعمنا المتخصص متاح على مدار الساعة للإجابة على استفساراتك وحل مشكلاتك فوراً.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <h5 class="feature-title">تخصيص كامل</h5>
+                    <p class="feature-desc">نبني برامج مخصصة تماماً لاحتياجات عملك، مع مرونة كاملة في التعديل والتطوير المستمر.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h5 class="feature-title">متجاوب مع كل الأجهزة</h5>
+                    <p class="feature-desc">تصاميمنا تعمل بشكل مثالي على جميع الأجهزة: الكمبيوتر، الجهاز اللوحي والهاتف الذكي.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Products -->
+{% if latest_products %}
+<section class="products-section" style="background:#fafbff;">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3" data-aos="fade-up">
+            <div>
+                <div class="section-badge"><i class="fas fa-th-large"></i> أحدث البرامج</div>
+                <h2 class="section-title mb-0">برامجنا <span class="text-gradient">المميزة</span></h2>
+            </div>
+            <a href="/products/" class="btn-product-detail" style="padding:12px 28px; border-radius:50px; text-decoration:none;">
+                عرض الكل <i class="fas fa-arrow-left me-1"></i>
+            </a>
+        </div>
+        <div class="row g-4">
+            {% for product in latest_products %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'1' }}00">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <div class="product-placeholder-icon">
+                                {% if product.product_type == 'desktop' %}<i class="fas fa-desktop"></i>
+                                {% elif product.product_type == 'web' %}<i class="fas fa-globe"></i>
+                                {% else %}<i class="fas fa-mobile-alt"></i>{% endif %}
+                            </div>
+                        {% endif %}
+                        <span class="product-type-badge">
+                            {% if product.product_type == 'desktop' %}سطح المكتب
+                            {% elif product.product_type == 'web' %}ويب
+                            {% else %}جوال{% endif %}
+                        </span>
+                        {% if product.is_featured %}
+                        <span class="product-featured-badge"><i class="fas fa-star me-1"></i> مميز</span>
+                        {% endif %}
+                    </div>
+                    <div class="product-body">
+                        <h5 class="product-title">{{ product.name }}</h5>
+                        <p class="product-desc">{{ product.short_description|truncatechars:100 }}</p>
+                        {% if product.get_features_list %}
+                        <ul class="product-features-mini">
+                            {% for feature in product.get_features_list|slice:":3" %}
+                            <li><i class="fas fa-check-circle"></i> {{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if product.price %}
+                        <div class="product-price">{{ product.price }} ر.س</div>
+                        {% elif product.price_label %}
+                        <div class="product-price free">{{ product.price_label }}</div>
+                        {% else %}
+                        <div class="product-price free">تواصل للسعر</div>
+                        {% endif %}
+                        <div class="product-actions">
+                            <a href="{{ product.get_absolute_url }}" class="btn-product-detail">
+                                <i class="fas fa-eye me-1"></i> التفاصيل
+                            </a>
+                            {% if product.download_url or product.demo_url %}
+                            <a href="{{ product.download_url|default:product.demo_url }}" class="btn-product-download" target="_blank">
+                                <i class="fas fa-download"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Services Preview -->
+{% if services %}
+<section class="services-section">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge" style="color:#a78bfa; background:rgba(108,99,255,0.1); border-color:rgba(108,99,255,0.3);">
+                <i class="fas fa-tools"></i> خدماتنا
+            </div>
+            <h2 class="section-title" style="color:white;">ماذا <span class="text-gradient">نقدم لك؟</span></h2>
+            <p class="section-subtitle mx-auto" style="color:#a0aec0;">حلول برمجية شاملة تغطي جميع احتياجات عملك التقني</p>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="service-card">
+                    <div class="service-icon"><i class="{{ service.icon }}"></i></div>
+                    <h5 class="service-title">{{ service.title }}</h5>
+                    <p class="service-desc">{{ service.description|truncatechars:120 }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="/services/" class="btn-hero-outline">
+                استعرض كل خدماتنا <i class="fas fa-arrow-left me-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container position-relative">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7" data-aos="fade-right">
+                <h2 class="cta-title">هل لديك فكرة مشروع؟<br>دعنا نحوّلها إلى واقع!</h2>
+                <p class="cta-desc">تواصل معنا اليوم واحصل على استشارة مجانية لتقييم مشروعك البرمجي. فريقنا المتخصص جاهز لمساعدتك.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="/contact/" class="btn-cta-white">
+                        <i class="fas fa-paper-plane"></i> ابدأ مشروعك الآن
+                    </a>
+                    <a href="https://wa.me/{{ whatsapp_number }}" class="btn-cta-outline" target="_blank">
+                        <i class="fab fa-whatsapp"></i> واتساب
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-10 rounded-3 p-3">
+                        <div class="bg-white rounded-2 p-2" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-clock text-primary"></i>
+                        </div>
+                        <div class="text-white text-start">
+                            <div class="fw-bold">تسليم سريع</div>
+                            <div style="font-size:0.85rem;opacity:0.8;">في المواعيد المتفق عليها</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-10 rounded-3 p-3">
+                        <div class="bg-white rounded-2 p-2" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-handshake text-primary"></i>
+                        </div>
+                        <div class="text-white text-start">
+                            <div class="fw-bold">ضمان الرضا</div>
+                            <div style="font-size:0.85rem;opacity:0.8;">100% ضمان جودة العمل</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-10 rounded-3 p-3">
+                        <div class="bg-white rounded-2 p-2" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-tag text-primary"></i>
+                        </div>
+                        <div class="text-white text-start">
+                            <div class="fw-bold">أسعار تنافسية</div>
+                            <div style="font-size:0.85rem;opacity:0.8;">أفضل جودة بأنسب سعر</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

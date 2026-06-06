@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block title %}الخدمات - Essam Software{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-7" data-aos="fade-up">
+                <div class="page-hero-badge"><i class="fas fa-tools"></i> خدماتنا</div>
+                <h1 class="page-hero-title">خدمات <span style="background:linear-gradient(135deg,#a78bfa,#6c63ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">احترافية</span> متكاملة</h1>
+                <p class="page-hero-desc mx-auto">نقدم طيفاً واسعاً من الخدمات البرمجية التي تلبي جميع احتياجات مشروعك الرقمي بأعلى معايير الجودة.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services from DB -->
+{% if services %}
+<section style="padding:80px 0; background:#fafbff;">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge"><i class="fas fa-list"></i> خدماتنا المتاحة</div>
+            <h2 class="section-title">كل ما <span class="text-gradient">تحتاجه</span></h2>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="service-page-card">
+                    <div class="service-page-icon"><i class="{{ service.icon }}"></i></div>
+                    <h5 class="fw-bold mb-3">{{ service.title }}</h5>
+                    <p class="text-muted" style="line-height:1.8; font-size:0.93rem;">{{ service.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Static Services -->
+<section style="padding:80px 0;">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge"><i class="fas fa-cogs"></i> تخصصاتنا</div>
+            <h2 class="section-title">مجالات <span class="text-gradient">تخصصنا</span></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="d-flex gap-4 p-4 rounded-4" style="background:white;border:1px solid rgba(108,99,255,0.1);box-shadow:0 4px 20px rgba(108,99,255,0.08);transition:all 0.3s;height:100%;">
+                    <div style="width:60px;height:60px;background:linear-gradient(135deg,#6c63ff,#5a52d5);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-desktop text-white" style="font-size:1.4rem;"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2">تطوير برامج سطح المكتب</h5>
+                        <p class="text-muted mb-3" style="font-size:0.93rem;line-height:1.7;">نطور برامج احترافية تعمل على Windows ومنظومات أخرى لإدارة الأعمال، المخازن، الحسابات، وأي نظام مخصص تحتاجه.</p>
+                        <ul style="color:#6c63ff;font-size:0.85rem;padding-right:16px;">
+                            <li>أنظمة إدارة المخازن والمبيعات</li>
+                            <li>برامج المحاسبة والفواتير</li>
+                            <li>أنظمة إدارة الموظفين والرواتب</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="d-flex gap-4 p-4 rounded-4" style="background:white;border:1px solid rgba(108,99,255,0.1);box-shadow:0 4px 20px rgba(108,99,255,0.08);height:100%;">
+                    <div style="width:60px;height:60px;background:linear-gradient(135deg,#48ca8b,#22c55e);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-globe text-white" style="font-size:1.4rem;"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2">تطوير تطبيقات الويب</h5>
+                        <p class="text-muted mb-3" style="font-size:0.93rem;line-height:1.7;">نبني مواقع ومنصات ويب متكاملة وسريعة باستخدام أحدث تقنيات الويب مع تجربة مستخدم رائعة.</p>
+                        <ul style="color:#48ca8b;font-size:0.85rem;padding-right:16px;">
+                            <li>مواقع الشركات والمؤسسات</li>
+                            <li>منصات التجارة الإلكترونية</li>
+                            <li>لوحات التحكم والإدارة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="d-flex gap-4 p-4 rounded-4" style="background:white;border:1px solid rgba(108,99,255,0.1);box-shadow:0 4px 20px rgba(108,99,255,0.08);height:100%;">
+                    <div style="width:60px;height:60px;background:linear-gradient(135deg,#fc814a,#ff6b6b);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-mobile-alt text-white" style="font-size:1.4rem;"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2">تطوير تطبيقات الجوال</h5>
+                        <p class="text-muted mb-3" style="font-size:0.93rem;line-height:1.7;">تطبيقات جوال احترافية لنظامي Android وiOS بتصميم عصري وأداء عالي ومتميز.</p>
+                        <ul style="color:#fc814a;font-size:0.85rem;padding-right:16px;">
+                            <li>تطبيقات التجارة والخدمات</li>
+                            <li>تطبيقات المتاجر والإدارة</li>
+                            <li>تطبيقات التواصل والتعليم</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="d-flex gap-4 p-4 rounded-4" style="background:white;border:1px solid rgba(108,99,255,0.1);box-shadow:0 4px 20px rgba(108,99,255,0.08);height:100%;">
+                    <div style="width:60px;height:60px;background:linear-gradient(135deg,#feca57,#ff9f43);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <i class="fas fa-headset text-white" style="font-size:1.4rem;"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2">الدعم الفني والصيانة</h5>
+                        <p class="text-muted mb-3" style="font-size:0.93rem;line-height:1.7;">ندعم برامجنا بخدمة فنية مستمرة وتحديثات دورية وصيانة دائمة لضمان أعلى جودة أداء.</p>
+                        <ul style="color:#feca57;font-size:0.85rem;padding-right:16px;">
+                            <li>دعم فني على مدار الساعة</li>
+                            <li>تحديثات وتطويرات مستمرة</li>
+                            <li>تدريب فريق العمل</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process -->
+<section style="padding:80px 0;background:#fafbff;">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge"><i class="fas fa-route"></i> منهجيتنا</div>
+            <h2 class="section-title">كيف <span class="text-gradient">نعمل؟</span></h2>
+        </div>
+        <div class="row g-4 align-items-center">
+            {% for step in "1234"|make_list %}
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="text-center p-4">
+                    <div style="width:70px;height:70px;background:linear-gradient(135deg,#6c63ff,#5a52d5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:900;color:white;margin:0 auto 20px;">
+                        {{ forloop.counter }}
+                    </div>
+                    {% if forloop.counter == 1 %}
+                    <h6 class="fw-bold mb-2">تحليل المتطلبات</h6>
+                    <p class="text-muted" style="font-size:0.88rem;">نستمع لفكرتك ونحللها بدقة لفهم احتياجاتك الحقيقية.</p>
+                    {% elif forloop.counter == 2 %}
+                    <h6 class="fw-bold mb-2">التصميم والتخطيط</h6>
+                    <p class="text-muted" style="font-size:0.88rem;">نضع خطة تفصيلية وتصاميم أولية للموافقة عليها قبل التطوير.</p>
+                    {% elif forloop.counter == 3 %}
+                    <h6 class="fw-bold mb-2">التطوير والبناء</h6>
+                    <p class="text-muted" style="font-size:0.88rem;">نبني برنامجك باستخدام أفضل التقنيات مع تحديثات مستمرة.</p>
+                    {% else %}
+                    <h6 class="fw-bold mb-2">التسليم والدعم</h6>
+                    <p class="text-muted" style="font-size:0.88rem;">نسلم مشروعك في الموعد مع دعم فني كامل بعد الإطلاق.</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container position-relative text-center">
+        <h2 class="cta-title" data-aos="fade-up">ابدأ مشروعك اليوم!</h2>
+        <p class="cta-desc mx-auto" data-aos="fade-up" data-aos-delay="100">تواصل معنا الآن واحصل على استشارة مجانية لتقييم احتياجات مشروعك.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+            <a href="/contact/" class="btn-cta-white"><i class="fas fa-paper-plane"></i> ابدأ الآن</a>
+            <a href="https://wa.me/{{ whatsapp_number }}" class="btn-cta-outline" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

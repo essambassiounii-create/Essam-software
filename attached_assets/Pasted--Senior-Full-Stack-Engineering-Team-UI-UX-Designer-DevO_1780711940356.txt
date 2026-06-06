@@ -1,0 +1,141 @@
+أنت فريق تطوير برمجيات عالمي (Senior Full-Stack Engineering Team + UI/UX Designer + DevOps Engineer).
+
+أريد إنشاء موقع ويب احترافي لشركة برمجيات باسم:
+
+Essam Software
+
+هدف الموقع:
+موقع تسويقي احترافي (Software Company Portfolio + SaaS Landing Website) لعرض وبيع جميع البرامج والتطبيقات التي أقوم بتطويرها (Desktop / Web / Mobile).
+
+---
+
+## ⚙️ التقنيات المطلوبة:
+
+* Backend: Django
+* Frontend: HTML, CSS, JavaScript
+* UI Framework: Bootstrap 5 (أو Tailwind إذا كان أفضل)
+* Database: SQLite للتطوير و PostgreSQL للإنتاج
+* Deployment Ready: Render / Railway
+* Fully Responsive (Mobile, Tablet, Desktop)
+* دعم كامل للغة العربية RTL + الإنجليزية EN
+
+---
+
+## 🎯 المطلوب:
+
+إنشاء مشروع Django كامل جاهز للنشر يحتوي على:
+
+---
+
+## 🏠 1. الصفحة الرئيسية (Home)
+
+* تصميم SaaS احترافي حديث جدًا.
+* Hero Section يحتوي:
+
+  * اسم الشركة "Essam Software"
+  * شعار احترافي
+  * جملة تسويقية قوية
+  * زر: عرض البرامج
+  * زر: تواصل معنا
+* قسم مميزات الشركة.
+* عرض مختصر لأحدث البرامج.
+* إحصائيات (عدد البرامج / العملاء / المشاريع).
+* Call To Action قوي.
+
+---
+
+## ℹ️ 2. صفحة من نحن (About)
+
+* نبذة عن الشركة.
+* رؤية ورسالة الشركة.
+* خبرة المطور.
+* مجالات العمل.
+
+---
+
+## 💼 3. صفحة البرامج (Products)
+
+* عرض جميع البرامج بشكل Cards احترافية.
+* كل برنامج يحتوي:
+
+  * اسم البرنامج
+  * صورة
+  * وصف مختصر
+  * المميزات
+  * زر التفاصيل
+  * زر تحميل نسخة تجريبية أو طلب شراء
+
+---
+
+## 📄 4. صفحة تفاصيل البرنامج
+
+* وصف كامل للبرنامج.
+* صور Screenshots.
+* فيديو (اختياري).
+* مميزات تفصيلية.
+* زر تحميل / طلب.
+* نظام أسعار (اختياري).
+
+---
+
+## 🛠️ 5. صفحة الخدمات (Services)
+
+* تطوير برامج حسب الطلب.
+* تخصيص أنظمة.
+* دعم فني.
+* تدريب.
+
+---
+
+## 📞 6. صفحة تواصل معنا (Contact)
+
+* نموذج إرسال رسالة.
+* WhatsApp button مباشر.
+* Email.
+* روابط السوشيال ميديا.
+
+---
+
+## ⚙️ 7. لوحة التحكم (Admin Dashboard)
+
+* إدارة البرامج (CRUD).
+* إدارة الرسائل.
+* رفع صور البرامج.
+* إدارة المحتوى بالكامل بدون تعديل الكود.
+* استخدام Django Admin بشكل احترافي.
+
+---
+
+## 🗄️ قاعدة البيانات (Models المطلوبة):
+
+* Product
+* Category
+* ContactMessage
+* Service (اختياري)
+
+---
+
+## 🎨 التصميم:
+
+* UI احترافي جدًا مثل شركات SaaS العالمية.
+* Modern gradient design.
+* Animations بسيطة.
+* Clean layout.
+* UX ممتاز وسهل الاستخدام.
+
+---
+
+## 🚀 متطلبات تقنية إضافية:
+
+* SEO optimized (meta tags, clean URLs).
+* Fast loading performance.
+* Clean code architecture (apps separated).
+* Ready for GitHub deployment.
+* Ready for Render deployment.
+* Security best practices in Django.
+
+---
+
+## 🎯 الهدف النهائي:
+
+إنشاء موقع شركة برمجيات احترافي جاهز للإطلاق التجاري يمكن استخدامه مباشرة لتسويق وبيع البرامج على الإنترنت.

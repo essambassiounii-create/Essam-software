@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}البرامج - Essam Software{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-7" data-aos="fade-up">
+                <div class="page-hero-badge"><i class="fas fa-th-large"></i> البرامج</div>
+                <h1 class="page-hero-title">مكتبة <span style="background:linear-gradient(135deg,#a78bfa,#6c63ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">برامجنا</span></h1>
+                <p class="page-hero-desc mx-auto">استعرض مجموعتنا المتنوعة من البرامج الاحترافية لسطح المكتب، الويب، والجوال.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:70px 0;">
+    <div class="container">
+
+        <!-- Filters -->
+        <div class="d-flex flex-wrap align-items-center gap-2 mb-5 p-4 rounded-4" style="background:#fafbff;border:1px solid rgba(108,99,255,0.08);" data-aos="fade-up">
+            <span class="fw-bold text-muted me-2">تصفية حسب:</span>
+            <a href="/products/" class="filter-btn {% if not selected_type and not selected_category %}active{% endif %}">الكل</a>
+            <a href="/products/?type=desktop" class="filter-btn {% if selected_type == 'desktop' %}active{% endif %}"><i class="fas fa-desktop me-1"></i>سطح المكتب</a>
+            <a href="/products/?type=web" class="filter-btn {% if selected_type == 'web' %}active{% endif %}"><i class="fas fa-globe me-1"></i>ويب</a>
+            <a href="/products/?type=mobile" class="filter-btn {% if selected_type == 'mobile' %}active{% endif %}"><i class="fas fa-mobile-alt me-1"></i>جوال</a>
+            {% if categories %}
+            <div class="vr mx-2"></div>
+            {% for cat in categories %}
+            <a href="/products/?category={{ cat.slug }}" class="filter-btn {% if selected_category == cat.slug %}active{% endif %}">
+                <i class="{{ cat.icon }} me-1"></i>{{ cat.name }}
+            </a>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- Products Grid -->
+        {% if products %}
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'1' }}00">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <div class="product-placeholder-icon" style="background:linear-gradient(135deg,
+                                {% if product.product_type == 'desktop' %}#667eea,#764ba2
+                                {% elif product.product_type == 'web' %}#11998e,#38ef7d
+                                {% else %}#f46b45,#eea849{% endif %});">
+                                {% if product.product_type == 'desktop' %}<i class="fas fa-desktop"></i>
+                                {% elif product.product_type == 'web' %}<i class="fas fa-globe"></i>
+                                {% else %}<i class="fas fa-mobile-alt"></i>{% endif %}
+                            </div>
+                        {% endif %}
+                        <span class="product-type-badge">
+                            {% if product.product_type == 'desktop' %}<i class="fas fa-desktop me-1"></i>سطح المكتب
+                            {% elif product.product_type == 'web' %}<i class="fas fa-globe me-1"></i>ويب
+                            {% else %}<i class="fas fa-mobile-alt me-1"></i>جوال{% endif %}
+                        </span>
+                        {% if product.is_featured %}
+                        <span class="product-featured-badge"><i class="fas fa-star me-1"></i>مميز</span>
+                        {% endif %}
+                    </div>
+                    <div class="product-body">
+                        {% if product.category %}
+                        <span style="font-size:0.75rem;color:#6c63ff;font-weight:600;background:rgba(108,99,255,0.08);padding:3px 10px;border-radius:50px;">
+                            <i class="{{ product.category.icon }} me-1"></i>{{ product.category.name }}
+                        </span>
+                        {% endif %}
+                        <h5 class="product-title mt-2">{{ product.name }}</h5>
+                        <p class="product-desc">{{ product.short_description|truncatechars:110 }}</p>
+                        {% if product.get_features_list %}
+                        <ul class="product-features-mini">
+                            {% for feature in product.get_features_list|slice:":3" %}
+                            <li><i class="fas fa-check-circle"></i> {{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% if product.price %}
+                        <div class="product-price">{{ product.price }} <span style="font-size:0.8rem;font-weight:500;">ر.س</span></div>
+                        {% elif product.price_label %}
+                        <div class="product-price free">{{ product.price_label }}</div>
+                        {% else %}
+                        <div class="product-price" style="color:#64748b;font-size:1rem;">تواصل للسعر</div>
+                        {% endif %}
+                        <div class="product-actions">
+                            <a href="{{ product.get_absolute_url }}" class="btn-product-detail">
+                                <i class="fas fa-eye me-1"></i> عرض التفاصيل
+                            </a>
+                            {% if product.download_url %}
+                            <a href="{{ product.download_url }}" class="btn-product-download" target="_blank" title="تحميل">
+                                <i class="fas fa-download"></i>
+                            </a>
+                            {% elif product.demo_url %}
+                            <a href="{{ product.demo_url }}" class="btn-product-download" target="_blank" title="نسخة تجريبية">
+                                <i class="fas fa-play"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-5" data-aos="fade-up">
+            <div style="font-size:4rem;color:#e2e8f0;margin-bottom:20px;"><i class="fas fa-box-open"></i></div>
+            <h4 class="text-muted">لا توجد برامج في هذا القسم بعد</h4>
+            <p class="text-muted">جاري العمل على إضافة برامج جديدة قريباً!</p>
+            <a href="/products/" class="filter-btn active mt-2">عرض الكل</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container position-relative text-center">
+        <h2 class="cta-title" data-aos="fade-up">لم تجد ما تبحث عنه؟</h2>
+        <p class="cta-desc mx-auto" data-aos="fade-up" data-aos-delay="100">يمكننا تطوير برنامج مخصص تماماً لاحتياجاتك. تواصل معنا الآن!</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+            <a href="/contact/" class="btn-cta-white"><i class="fas fa-magic"></i> اطلب برنامجاً مخصصاً</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

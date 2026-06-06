@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} - Essam Software{% endblock %}
+{% block meta_description %}{{ product.short_description }}{% endblock %}
+
+{% block content %}
+
+<section class="product-detail-hero">
+    <div class="container">
+        <div class="mb-3">
+            <nav aria-label="breadcrumb">
+                <div class="breadcrumb-custom">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="/products/">البرامج</a></li>
+                        <li class="breadcrumb-item active">{{ product.name }}</li>
+                    </ol>
+                </div>
+            </nav>
+        </div>
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7" data-aos="fade-right">
+                <span class="product-type-badge-lg product-type-badge-lg
+                    {% if product.product_type == 'desktop' %}badge-desktop
+                    {% elif product.product_type == 'web' %}badge-web
+                    {% else %}badge-mobile{% endif %}">
+                    {% if product.product_type == 'desktop' %}<i class="fas fa-desktop me-1"></i>برنامج سطح المكتب
+                    {% elif product.product_type == 'web' %}<i class="fas fa-globe me-1"></i>تطبيق ويب
+                    {% else %}<i class="fas fa-mobile-alt me-1"></i>تطبيق جوال{% endif %}
+                </span>
+                {% if product.is_featured %}
+                <span class="product-type-badge-lg ms-2" style="background:rgba(255,107,107,0.2);color:#ff6b6b;border:1px solid rgba(255,107,107,0.3);">
+                    <i class="fas fa-star me-1"></i> برنامج مميز
+                </span>
+                {% endif %}
+                <h1 style="font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:white;margin:16px 0 12px;">{{ product.name }}</h1>
+                {% if product.name_en %}
+                <p style="color:#a78bfa;font-size:1rem;margin-bottom:16px;">{{ product.name_en }}</p>
+                {% endif %}
+                <p style="color:#a0aec0;font-size:1.05rem;line-height:1.8;max-width:550px;">{{ product.short_description }}</p>
+                {% if product.category %}
+                <div class="mt-3">
+                    <span style="background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.3);color:#a78bfa;padding:5px 14px;border-radius:50px;font-size:0.85rem;">
+                        <i class="{{ product.category.icon }} me-1"></i>{{ product.category.name }}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded-4" style="box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+                {% else %}
+                <div style="background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.2);border-radius:24px;height:250px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas {% if product.product_type == 'desktop' %}fa-desktop{% elif product.product_type == 'web' %}fa-globe{% else %}fa-mobile-alt{% endif %}" style="font-size:6rem;color:rgba(108,99,255,0.4);"></i>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:70px 0;">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+
+                <!-- Screenshots -->
+                {% if product.screenshots.all %}
+                <div class="mb-5" data-aos="fade-up">
+                    <h4 class="fw-bold mb-4"><i class="fas fa-images text-primary me-2"></i>صور البرنامج</h4>
+                    <div class="rounded-4 overflow-hidden mb-3" style="background:#f0f0f0;height:350px;cursor:pointer;" onclick="openFullscreen(this)">
+                        <img id="mainScreenshot" src="{{ product.screenshots.first.image.url }}" alt="{{ product.name }}" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="row g-2">
+                        {% for shot in product.screenshots.all %}
+                        <div class="col-3">
+                            <div class="screenshot-thumb">
+                                <img src="{{ shot.image.url }}" alt="{{ shot.caption|default:product.name }}">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Description -->
+                <div class="mb-5" data-aos="fade-up">
+                    <h4 class="fw-bold mb-3"><i class="fas fa-align-right text-primary me-2"></i>وصف البرنامج</h4>
+                    <div style="background:#fafbff;border-radius:16px;padding:28px;border:1px solid rgba(108,99,255,0.08);line-height:2;color:#374151;font-size:0.98rem;">
+                        {{ product.full_description|linebreaks }}
+                    </div>
+                </div>
+
+                <!-- Features -->
+                {% if product.get_features_list %}
+                <div class="mb-5" data-aos="fade-up">
+                    <h4 class="fw-bold mb-4"><i class="fas fa-check-circle text-primary me-2"></i>مميزات البرنامج</h4>
+                    <ul class="product-features-list">
+                        {% for feature in product.get_features_list %}
+                        <li>
+                            <i class="fas fa-check-circle" style="color:var(--primary);"></i>
+                            {{ feature }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- Related Products -->
+                {% if related %}
+                <div data-aos="fade-up">
+                    <h4 class="fw-bold mb-4"><i class="fas fa-th-large text-primary me-2"></i>برامج مشابهة</h4>
+                    <div class="row g-3">
+                        {% for rel in related %}
+                        <div class="col-md-4">
+                            <div class="product-card" style="font-size:0.88rem;">
+                                <div class="product-image-wrapper" style="height:130px;">
+                                    {% if rel.image %}
+                                    <img src="{{ rel.image.url }}" alt="{{ rel.name }}">
+                                    {% else %}
+                                    <div class="product-placeholder-icon" style="background:linear-gradient(135deg,#667eea,#764ba2);">
+                                        <i class="fas fa-box" style="font-size:2.5rem;"></i>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="product-body" style="padding:14px;">
+                                    <h6 class="product-title" style="font-size:0.95rem;">{{ rel.name }}</h6>
+                                    <p class="product-desc" style="font-size:0.82rem;">{{ rel.short_description|truncatechars:70 }}</p>
+                                    <a href="{{ rel.get_absolute_url }}" class="btn-product-detail" style="font-size:0.82rem;padding:8px;">
+                                        عرض التفاصيل
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-card" data-aos="fade-left">
+                    <!-- Price -->
+                    <div class="price-display">
+                        {% if product.price %}
+                        <div class="price-amount">{{ product.price }}</div>
+                        <div class="price-currency">ريال سعودي</div>
+                        {% elif product.price_label %}
+                        <div class="price-amount" style="font-size:1.8rem;color:#22c55e;">{{ product.price_label }}</div>
+                        {% else %}
+                        <div class="price-amount" style="font-size:1.6rem;">تواصل للسعر</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex flex-column gap-3 mb-4">
+                        {% if product.download_url %}
+                        <a href="{{ product.download_url }}" class="btn-hero-primary text-center justify-content-center" target="_blank">
+                            <i class="fas fa-download"></i> تحميل البرنامج
+                        </a>
+                        {% endif %}
+                        {% if product.demo_url %}
+                        <a href="{{ product.demo_url }}" class="btn-product-download text-center" target="_blank" style="padding:12px;">
+                            <i class="fas fa-play me-1"></i> تجربة النسخة التجريبية
+                        </a>
+                        {% endif %}
+                        <a href="https://wa.me/{{ whatsapp_number }}?text=أريد الاستفسار عن برنامج: {{ product.name }}" class="d-flex align-items-center justify-content-center gap-2 text-decoration-none p-3 rounded-3" style="background:#25D366;color:white;font-weight:700;" target="_blank">
+                            <i class="fab fa-whatsapp fa-lg"></i> تواصل عبر واتساب
+                        </a>
+                        <a href="/contact/" class="btn-product-download text-center" style="padding:12px;">
+                            <i class="fas fa-envelope me-1"></i> أرسل استفساراً
+                        </a>
+                    </div>
+
+                    <!-- Info -->
+                    <div style="border-top:1px solid #f0f0f0;padding-top:20px;">
+                        <h6 class="fw-bold mb-3">معلومات البرنامج</h6>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="d-flex justify-content-between align-items-center py-2" style="border-bottom:1px solid #f8f8f8;">
+                                <span class="text-muted" style="font-size:0.88rem;"><i class="fas fa-tag me-1 text-primary"></i>النوع</span>
+                                <span style="font-size:0.88rem;font-weight:600;">
+                                    {% if product.product_type == 'desktop' %}سطح المكتب
+                                    {% elif product.product_type == 'web' %}ويب
+                                    {% else %}جوال{% endif %}
+                                </span>
+                            </div>
+                            {% if product.category %}
+                            <div class="d-flex justify-content-between align-items-center py-2" style="border-bottom:1px solid #f8f8f8;">
+                                <span class="text-muted" style="font-size:0.88rem;"><i class="fas fa-folder me-1 text-primary"></i>التصنيف</span>
+                                <span style="font-size:0.88rem;font-weight:600;">{{ product.category.name }}</span>
+                            </div>
+                            {% endif %}
+                            <div class="d-flex justify-content-between align-items-center py-2" style="border-bottom:1px solid #f8f8f8;">
+                                <span class="text-muted" style="font-size:0.88rem;"><i class="fas fa-calendar me-1 text-primary"></i>تاريخ الإضافة</span>
+                                <span style="font-size:0.88rem;font-weight:600;">{{ product.created_at|date:"Y/m/d" }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center py-2">
+                                <span class="text-muted" style="font-size:0.88rem;"><i class="fas fa-headset me-1 text-primary"></i>الدعم</span>
+                                <span style="font-size:0.88rem;font-weight:600;color:#22c55e;">متوفر 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
