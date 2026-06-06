@@ -83,11 +83,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Essam Software",
-    "site_header": "Essam Software",
-    "site_brand": "Essam Software",
-    "welcome_sign": "مرحباً بك في لوحة تحكم Essam Software",
-    "copyright": "Essam Software © 2024",
+    "site_title": "NexaCode",
+    "site_header": "NexaCode",
+    "site_brand": "NexaCode",
+    "welcome_sign": "مرحباً بك في لوحة تحكم NexaCode",
+    "copyright": "NexaCode © 2024",
     "search_model": ["auth.user", "products.product"],
     "show_sidebar": True,
     "navigation_expanded": True,
