@@ -8,6 +8,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.replit.dev',
+    'https://*.replit.app',
+    'https://*.riker.replit.dev',
+    'http://localhost:5000',
+    'http://0.0.0.0:5000',
+]
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
