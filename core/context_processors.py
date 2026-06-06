@@ -1,7 +1,7 @@
 def site_context(request):
     return {
-        'site_name': 'NexaCode',
-        'site_name_ar': 'نيكساكود',
+        'site_name': 'Nova Soft',
+        'site_name_ar': 'نوفا سوفت',
         'site_tagline': 'نحول أفكارك إلى برامج احترافية',
         'site_tagline_en': 'Turning Your Ideas Into Professional Software',
         'whatsapp_number': '+201021222265',

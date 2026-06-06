@@ -94,11 +94,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
-    "site_title": "NexaCode",
-    "site_header": "NexaCode",
-    "site_brand": "NexaCode",
-    "welcome_sign": "مرحباً بك في لوحة تحكم NexaCode",
-    "copyright": "NexaCode © 2024",
+    "site_title": "Nova Soft",
+    "site_header": "Nova Soft",
+    "site_brand": "Nova Soft",
+    "welcome_sign": "مرحباً بك في لوحة تحكم Nova Soft",
+    "copyright": "Nova Soft © 2024",
     "search_model": ["auth.user", "products.product"],
     "show_sidebar": True,
     "navigation_expanded": True,
