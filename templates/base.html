@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}Nova Soft - شركة برمجيات متخصصة في تطوير برامج سطح المكتب وتطبيقات الويب والجوال{% endblock %}">
+    <meta name="keywords" content="برمجة, تطوير برامج, تطبيقات, ويب, جوال, Nova Soft, نوفا سوفت, برمجيات, الإسكندرية, مصر">
+    <meta name="author" content="Nova Soft - Eng. Essam Ismail">
+    <meta property="og:title" content="{% block og_title %}Nova Soft - حلول برمجية احترافية{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}شركة Nova Soft متخصصة في تطوير برامج سطح المكتب وتطبيقات الويب والجوال بأعلى معايير الجودة{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_EG">
     <title>{% block title %}Nova Soft{% endblock %}</title>
+    <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg">
+    <link rel="shortcut icon" href="/static/img/favicon.svg">
 
     <!-- Bootstrap 5 RTL -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
@@ -94,11 +102,11 @@
                     </div>
                     <p class="text-secondary-custom">نحول أفكارك إلى برامج احترافية. نقدم حلولاً برمجية متكاملة لجميع قطاعات الأعمال.</p>
                     <div class="social-links d-flex gap-3 mt-3">
-                        <a href="{{ facebook_url }}" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-                        <a href="{{ twitter_url }}" class="social-btn"><i class="fab fa-twitter"></i></a>
-                        <a href="{{ linkedin_url }}" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="{{ youtube_url }}" class="social-btn"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/{{ whatsapp_number }}" class="social-btn whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+                        {% if facebook_url != '#' %}<a href="{{ facebook_url }}" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                        {% if instagram_url != '#' %}<a href="{{ instagram_url }}" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>{% endif %}
+                        {% if linkedin_url != '#' %}<a href="{{ linkedin_url }}" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+                        {% if youtube_url != '#' %}<a href="{{ youtube_url }}" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>{% endif %}
+                        <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" class="social-btn whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
