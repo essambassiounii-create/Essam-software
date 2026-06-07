@@ -1,10 +1,10 @@
-// Essam Software - Main JS
+// Nova Soft - Main JS
 
 document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize AOS
     AOS.init({
-        duration: 700,
+        duration: 800,
         easing: 'ease-out-cubic',
         once: true,
         offset: 60,
@@ -14,18 +14,31 @@ document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('mainNavbar');
     if (navbar) {
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
+    }
+
+    // Hero Particles
+    const particlesContainer = document.getElementById('heroParticles');
+    if (particlesContainer) {
+        for (let i = 0; i < 18; i++) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            const size = Math.random() * 20 + 8;
+            p.style.cssText = `
+                width:${size}px; height:${size}px;
+                left:${Math.random() * 100}%;
+                animation-duration:${Math.random() * 15 + 10}s;
+                animation-delay:${Math.random() * 10}s;
+                opacity:${Math.random() * 0.3 + 0.05};
+            `;
+            particlesContainer.appendChild(p);
+        }
     }
 
     // Animated counters
     const counters = document.querySelectorAll('.counter-num');
     if (counters.length) {
-        const observerOptions = { threshold: 0.5 };
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -46,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     observer.unobserve(el);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.5 });
         counters.forEach(c => observer.observe(c));
     }
 
@@ -77,28 +90,20 @@ document.addEventListener('DOMContentLoaded', function () {
             thumb.addEventListener('click', function () {
                 thumbs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                const src = this.querySelector('img').src;
-                mainImg.src = src;
+                mainImg.style.opacity = '0';
+                setTimeout(() => {
+                    mainImg.src = this.querySelector('img').src;
+                    mainImg.style.opacity = '1';
+                }, 200);
             });
         });
         if (thumbs[0]) thumbs[0].classList.add('active');
     }
 
-    // Product type badge colors
-    const typeBadges = document.querySelectorAll('[data-type]');
-    typeBadges.forEach(badge => {
-        const t = badge.getAttribute('data-type');
-        if (t === 'desktop') badge.classList.add('badge-desktop');
-        else if (t === 'web') badge.classList.add('badge-web');
-        else if (t === 'mobile') badge.classList.add('badge-mobile');
-    });
-
     // Auto-dismiss messages
-    const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(alert => {
+    document.querySelectorAll('.alert').forEach(alert => {
         setTimeout(() => {
-            const bsAlert = new bootstrap.Alert(alert);
-            bsAlert.close();
+            try { new bootstrap.Alert(alert).close(); } catch(e) {}
         }, 5000);
     });
 
@@ -110,6 +115,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+        });
+    });
+
+    // Tech items hover glow
+    document.querySelectorAll('.tech-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.background = 'linear-gradient(135deg, rgba(108,99,255,0.05), rgba(108,99,255,0.02))';
+        });
+        item.addEventListener('mouseleave', function() {
+            this.style.background = 'white';
         });
     });
 

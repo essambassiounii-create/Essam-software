@@ -6,15 +6,16 @@
 
 <!-- Hero Section -->
 <section class="hero-section">
+    <div class="hero-particles" id="heroParticles"></div>
     <div class="container position-relative">
         <div class="row align-items-center g-5">
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="hero-badge">
-                    <i class="fas fa-circle text-success" style="font-size:0.5rem;"></i>
+                    <span class="badge-dot"></span>
                     متاح للمشاريع الجديدة
                 </div>
                 <h1 class="hero-title">
-                    نحول <span class="highlight">أفكارك</span> إلى<br>برامج احترافية
+                    نحول <span class="highlight" id="typingText">أفكارك</span><br>إلى برامج احترافية
                 </h1>
                 <p class="hero-desc">
                     Nova Soft شركة متخصصة في تطوير برامج سطح المكتب، تطبيقات الويب والجوال.
@@ -28,33 +29,40 @@
                         <i class="fas fa-paper-plane"></i> تواصل معنا
                     </a>
                 </div>
-                <div class="d-flex align-items-center gap-4 mt-4" style="color:rgba(255,255,255,0.6); font-size:0.85rem;">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-check-circle text-success"></i> جودة مضمونة
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-check-circle text-success"></i> دعم فني مستمر
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="fas fa-check-circle text-success"></i> تسليم في الوقت
-                    </div>
+                <div class="hero-checks">
+                    <div class="hero-check-item"><i class="fas fa-check-circle"></i> جودة مضمونة</div>
+                    <div class="hero-check-item"><i class="fas fa-check-circle"></i> دعم فني مستمر</div>
+                    <div class="hero-check-item"><i class="fas fa-check-circle"></i> تسليم في الوقت</div>
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                 <div class="hero-graphic">
                     <div class="hero-sphere"></div>
+                    <div class="hero-float-card hero-float-1" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-check text-success me-2"></i>
+                        <span>تم تسليم المشروع ✓</span>
+                    </div>
+                    <div class="hero-float-card hero-float-2" data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-star text-warning me-1"></i>
+                        <i class="fas fa-star text-warning me-1"></i>
+                        <i class="fas fa-star text-warning me-1"></i>
+                        <i class="fas fa-star text-warning me-1"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <div style="font-size:0.75rem;color:#a0aec0;margin-top:4px;">تقييم العميل</div>
+                    </div>
                     <div class="hero-code-card">
                         <div class="code-header">
                             <div class="code-dot code-dot-red"></div>
                             <div class="code-dot code-dot-yellow"></div>
                             <div class="code-dot code-dot-green"></div>
+                            <span style="color:#546e7a;font-size:0.7rem;margin-right:auto;font-family:monospace;">nova_soft.py</span>
                         </div>
                         <div class="code-line">
                             <span class="code-comment"># Nova Soft Professional Solutions</span>
                         </div>
                         <div class="code-line">
                             <span class="code-keyword">class </span>
-                            <span class="code-func">Nova Soft</span>
+                            <span class="code-func">NovaSoft</span>
                             <span style="color:#fff">:</span>
                         </div>
                         <div class="code-line" style="padding-right:20px;">
@@ -63,7 +71,7 @@
                             <span class="code-string">"نوفا سوفت"</span>
                         </div>
                         <div class="code-line" style="padding-right:20px;">
-                            <span class="code-func">products </span>
+                            <span class="code-func">projects </span>
                             <span style="color:#fff">= </span>
                             <span class="code-number">{{ stats.products_count }}+</span>
                         </div>
@@ -84,10 +92,16 @@
                         <div class="code-line mt-2">
                             <span style="color:#48ca8b;">✓ </span>
                             <span class="code-string">Ready for deployment!</span>
+                            <span class="code-cursor"></span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
         </div>
     </div>
 </section>
@@ -100,6 +114,7 @@
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-box-open"></i></div>
                     <div class="stat-number counter-num" data-target="{{ stats.products_count }}">0</div>
+                    <div class="stat-suffix">+</div>
                     <div class="stat-label">برنامج منجز</div>
                 </div>
             </div>
@@ -107,6 +122,7 @@
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-users"></i></div>
                     <div class="stat-number counter-num" data-target="{{ stats.clients_count }}">0</div>
+                    <div class="stat-suffix">+</div>
                     <div class="stat-label">عميل راضٍ</div>
                 </div>
             </div>
@@ -114,6 +130,7 @@
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
                     <div class="stat-number counter-num" data-target="{{ stats.projects_count }}">0</div>
+                    <div class="stat-suffix">+</div>
                     <div class="stat-label">مشروع مكتمل</div>
                 </div>
             </div>
@@ -121,6 +138,7 @@
                 <div class="stat-card">
                     <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
                     <div class="stat-number counter-num" data-target="{{ stats.years_count }}">0</div>
+                    <div class="stat-suffix">+</div>
                     <div class="stat-label">سنوات خبرة</div>
                 </div>
             </div>
@@ -132,9 +150,7 @@
 <section class="features-section">
     <div class="container">
         <div class="section-header text-center" data-aos="fade-up">
-            <div class="section-badge">
-                <i class="fas fa-star"></i> لماذا نحن؟
-            </div>
+            <div class="section-badge"><i class="fas fa-star"></i> لماذا نحن؟</div>
             <h2 class="section-title">ما يميز <span class="text-gradient">Nova Soft</span></h2>
             <p class="section-subtitle mx-auto">نقدم أفضل الحلول البرمجية بجودة عالية واحترافية تفوق التوقعات</p>
             <p class="mt-2" style="color:#6c63ff; font-weight:700; font-size:1rem; letter-spacing:0.5px;">Eng. Essam Ismail</p>
@@ -142,44 +158,92 @@
         <div class="row g-4">
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-medal"></i></div>
+                    <div class="feature-icon-wrap"><div class="feature-icon"><i class="fas fa-medal"></i></div></div>
                     <h5 class="feature-title">جودة لا تُضاهى</h5>
                     <p class="feature-desc">نلتزم بأعلى معايير الجودة في كل مرحلة من مراحل التطوير، من التصميم حتى التسليم النهائي.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="feature-icon-wrap"><div class="feature-icon"><i class="fas fa-rocket"></i></div></div>
                     <h5 class="feature-title">أداء سريع وفعّال</h5>
                     <p class="feature-desc">برامجنا مُحسَّنة للأداء العالي وتعمل بكفاءة ممتازة على جميع الأجهزة والأنظمة.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-icon-wrap"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div></div>
                     <h5 class="feature-title">أمان وموثوقية</h5>
                     <p class="feature-desc">نضمن حماية بياناتك بأحدث تقنيات الأمان والتشفير، مع توافر تام وموثوقية عالية.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <div class="feature-icon-wrap"><div class="feature-icon"><i class="fas fa-headset"></i></div></div>
                     <h5 class="feature-title">دعم فني 24/7</h5>
                     <p class="feature-desc">فريق دعمنا المتخصص متاح على مدار الساعة للإجابة على استفساراتك وحل مشكلاتك فوراً.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="feature-icon-wrap"><div class="feature-icon"><i class="fas fa-cogs"></i></div></div>
                     <h5 class="feature-title">تخصيص كامل</h5>
                     <p class="feature-desc">نبني برامج مخصصة تماماً لاحتياجات عملك، مع مرونة كاملة في التعديل والتطوير المستمر.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="feature-icon-wrap"><div class="feature-icon"><i class="fas fa-mobile-alt"></i></div></div>
                     <h5 class="feature-title">متجاوب مع كل الأجهزة</h5>
                     <p class="feature-desc">تصاميمنا تعمل بشكل مثالي على جميع الأجهزة: الكمبيوتر، الجهاز اللوحي والهاتف الذكي.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How We Work Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <div class="section-badge" style="color:#a78bfa;background:rgba(108,99,255,0.1);border-color:rgba(108,99,255,0.3);">
+                <i class="fas fa-route"></i> طريقة عملنا
+            </div>
+            <h2 class="section-title" style="color:white;">كيف <span class="text-gradient">نعمل معك؟</span></h2>
+            <p class="section-subtitle mx-auto" style="color:#a0aec0;">منهجية واضحة وشفافة من أول نقاش حتى التسليم النهائي</p>
+        </div>
+        <div class="row g-4 position-relative">
+            <div class="process-line d-none d-lg-block"></div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                <div class="process-card">
+                    <div class="process-num">01</div>
+                    <div class="process-icon"><i class="fas fa-comments"></i></div>
+                    <h5 class="process-title">النقاش والتحليل</h5>
+                    <p class="process-desc">نستمع لفكرتك ونحللها بعمق لنفهم احتياجاتك الحقيقية</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                <div class="process-card">
+                    <div class="process-num">02</div>
+                    <div class="process-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <h5 class="process-title">التصميم والتخطيط</h5>
+                    <p class="process-desc">نصمم واجهات احترافية ونضع خطة عمل واضحة بمواعيد محددة</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="process-card">
+                    <div class="process-num">03</div>
+                    <div class="process-icon"><i class="fas fa-code"></i></div>
+                    <h5 class="process-title">البرمجة والتطوير</h5>
+                    <p class="process-desc">نطور برنامجك باستخدام أحدث التقنيات مع تحديثات مستمرة</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="450">
+                <div class="process-card">
+                    <div class="process-num">04</div>
+                    <div class="process-icon"><i class="fas fa-rocket"></i></div>
+                    <h5 class="process-title">التسليم والدعم</h5>
+                    <p class="process-desc">نسلمك برنامجاً جاهزاً ونقدم دعماً فنياً مستمراً بعد التسليم</p>
                 </div>
             </div>
         </div>
@@ -195,7 +259,7 @@
                 <div class="section-badge"><i class="fas fa-th-large"></i> أحدث البرامج</div>
                 <h2 class="section-title mb-0">برامجنا <span class="text-gradient">المميزة</span></h2>
             </div>
-            <a href="/products/" class="btn-product-detail" style="padding:12px 28px; border-radius:50px; text-decoration:none;">
+            <a href="/products/" class="btn-product-detail" style="padding:12px 28px;border-radius:50px;text-decoration:none;">
                 عرض الكل <i class="fas fa-arrow-left me-1"></i>
             </a>
         </div>
@@ -263,7 +327,7 @@
 <section class="services-section">
     <div class="container">
         <div class="section-header text-center mb-5" data-aos="fade-up">
-            <div class="section-badge" style="color:#a78bfa; background:rgba(108,99,255,0.1); border-color:rgba(108,99,255,0.3);">
+            <div class="section-badge" style="color:#a78bfa;background:rgba(108,99,255,0.1);border-color:rgba(108,99,255,0.3);">
                 <i class="fas fa-tools"></i> خدماتنا
             </div>
             <h2 class="section-title" style="color:white;">ماذا <span class="text-gradient">نقدم لك؟</span></h2>
@@ -281,57 +345,146 @@
             {% endfor %}
         </div>
         <div class="text-center mt-5" data-aos="fade-up">
-            <a href="/services/" class="btn-hero-outline">
-                استعرض كل خدماتنا <i class="fas fa-arrow-left me-1"></i>
-            </a>
+            <a href="/services/" class="btn-hero-outline">استعرض كل خدماتنا <i class="fas fa-arrow-left me-1"></i></a>
         </div>
     </div>
 </section>
 {% endif %}
 
+<!-- Technologies Section -->
+<section class="tech-section">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <div class="section-badge"><i class="fas fa-layer-group"></i> تقنياتنا</div>
+            <h2 class="section-title">التقنيات التي <span class="text-gradient">نستخدمها</span></h2>
+            <p class="section-subtitle mx-auto">نعمل بأحدث التقنيات لضمان أفضل النتائج لمشاريعك</p>
+        </div>
+        <div class="tech-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="tech-item"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+            <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
+            <div class="tech-item"><i class="fab fa-android"></i><span>Android</span></div>
+            <div class="tech-item"><i class="fab fa-apple"></i><span>iOS</span></div>
+            <div class="tech-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+            <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+            <div class="tech-item"><i class="fab fa-php"></i><span>PHP</span></div>
+            <div class="tech-item"><i class="fas fa-database"></i><span>SQL</span></div>
+            <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <div class="section-badge" style="color:#a78bfa;background:rgba(108,99,255,0.1);border-color:rgba(108,99,255,0.3);">
+                <i class="fas fa-quote-right"></i> آراء العملاء
+            </div>
+            <h2 class="section-title" style="color:white;">ماذا يقول <span class="text-gradient">عملاؤنا؟</span></h2>
+            <p class="section-subtitle mx-auto" style="color:#a0aec0;">ثقة عملائنا هي أكبر جائزة نحصل عليها</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Nova Soft طورت لنا برنامج محاسبة متكامل في وقت قياسي وبجودة عالية جداً. الدعم الفني ممتاز ومتواجد دائماً."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">أ.م</div>
+                        <div>
+                            <div class="testimonial-name">أحمد محمد</div>
+                            <div class="testimonial-role">مدير شركة تجارية</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                <div class="testimonial-card testimonial-featured">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"تعاملت مع Nova Soft لتطوير تطبيق جوال لمتجري الإلكتروني. النتيجة كانت أفضل مما توقعت! فريق محترف ومبدع."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">س.ع</div>
+                        <div>
+                            <div class="testimonial-name">سارة العمري</div>
+                            <div class="testimonial-role">صاحبة متجر إلكتروني</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"نظام إدارة المخزون الذي طوروه لنا غيّر طريقة عملنا كلياً. توفير كبير في الوقت والجهد. أنصح بهم بشدة."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">خ.ر</div>
+                        <div>
+                            <div class="testimonial-name">خالد الرشيد</div>
+                            <div class="testimonial-role">مدير مستودعات</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CTA Section -->
 <section class="cta-section">
+    <div class="cta-bg-shapes">
+        <div class="cta-shape cta-shape-1"></div>
+        <div class="cta-shape cta-shape-2"></div>
+    </div>
     <div class="container position-relative">
         <div class="row align-items-center g-4">
             <div class="col-lg-7" data-aos="fade-right">
+                <div class="section-badge" style="color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);">
+                    <i class="fas fa-bolt"></i> ابدأ الآن
+                </div>
                 <h2 class="cta-title">هل لديك فكرة مشروع؟<br>دعنا نحوّلها إلى واقع!</h2>
-                <p class="cta-desc">تواصل معنا اليوم واحصل على استشارة مجانية لتقييم مشروعك البرمجي. فريقنا المتخصص جاهز لمساعدتك.</p>
+                <p class="cta-desc">تواصل معنا اليوم واحصل على <strong>استشارة مجانية</strong> لتقييم مشروعك البرمجي. فريقنا المتخصص جاهز لمساعدتك.</p>
                 <div class="d-flex gap-3 flex-wrap">
                     <a href="/contact/" class="btn-cta-white">
                         <i class="fas fa-paper-plane"></i> ابدأ مشروعك الآن
                     </a>
                     <a href="https://wa.me/{{ whatsapp_number }}" class="btn-cta-outline" target="_blank">
-                        <i class="fab fa-whatsapp"></i> واتساب
+                        <i class="fab fa-whatsapp"></i> واتساب مباشرة
                     </a>
                 </div>
             </div>
             <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
-                <div class="d-flex flex-column gap-3">
-                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-10 rounded-3 p-3">
-                        <div class="bg-white rounded-2 p-2" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-clock text-primary"></i>
-                        </div>
-                        <div class="text-white text-start">
-                            <div class="fw-bold">تسليم سريع</div>
-                            <div style="font-size:0.85rem;opacity:0.8;">في المواعيد المتفق عليها</div>
+                <div class="cta-features">
+                    <div class="cta-feature-item">
+                        <div class="cta-feature-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <div class="fw-bold text-white">تسليم سريع</div>
+                            <div class="cta-feature-sub">في المواعيد المتفق عليها</div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-10 rounded-3 p-3">
-                        <div class="bg-white rounded-2 p-2" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-handshake text-primary"></i>
-                        </div>
-                        <div class="text-white text-start">
-                            <div class="fw-bold">ضمان الرضا</div>
-                            <div style="font-size:0.85rem;opacity:0.8;">100% ضمان جودة العمل</div>
+                    <div class="cta-feature-item">
+                        <div class="cta-feature-icon"><i class="fas fa-handshake"></i></div>
+                        <div>
+                            <div class="fw-bold text-white">ضمان الرضا</div>
+                            <div class="cta-feature-sub">100% ضمان جودة العمل</div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-3 bg-white bg-opacity-10 rounded-3 p-3">
-                        <div class="bg-white rounded-2 p-2" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-tag text-primary"></i>
+                    <div class="cta-feature-item">
+                        <div class="cta-feature-icon"><i class="fas fa-tag"></i></div>
+                        <div>
+                            <div class="fw-bold text-white">أسعار تنافسية</div>
+                            <div class="cta-feature-sub">أفضل جودة بأنسب سعر</div>
                         </div>
-                        <div class="text-white text-start">
-                            <div class="fw-bold">أسعار تنافسية</div>
-                            <div style="font-size:0.85rem;opacity:0.8;">أفضل جودة بأنسب سعر</div>
+                    </div>
+                    <div class="cta-feature-item">
+                        <div class="cta-feature-icon"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <div class="fw-bold text-white">دعم مستمر</div>
+                            <div class="cta-feature-sub">متاحون 24/7 لخدمتك</div>
                         </div>
                     </div>
                 </div>
