@@ -106,6 +106,36 @@
     </div>
 </section>
 
+<!-- Services Preview — أول ما يرى الزائر -->
+{% if services %}
+<section class="services-top-section">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <div class="section-badge" style="color:#a78bfa;background:rgba(108,99,255,0.1);border-color:rgba(108,99,255,0.3);">
+                <i class="fas fa-tools"></i> خدماتنا
+            </div>
+            <h2 class="section-title" style="color:white;">ماذا <span class="text-gradient">نقدم لك؟</span></h2>
+            <p class="section-subtitle mx-auto" style="color:#a0aec0;">حلول برمجية شاملة تغطي جميع احتياجات عملك التقني</p>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                <div class="service-card service-card-top">
+                    <div class="service-icon"><i class="{{ service.icon }}"></i></div>
+                    <h5 class="service-title">{{ service.title }}</h5>
+                    <p class="service-desc">{{ service.description|truncatechars:130 }}</p>
+                    <a href="/services/" class="service-link">اعرف المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="/services/" class="btn-hero-outline">استعرض كل خدماتنا <i class="fas fa-arrow-left me-1"></i></a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
 <!-- Stats Section -->
 <section class="stats-section">
     <div class="container">
@@ -317,35 +347,6 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-
-<!-- Services Preview -->
-{% if services %}
-<section class="services-section">
-    <div class="container">
-        <div class="section-header text-center mb-5" data-aos="fade-up">
-            <div class="section-badge" style="color:#a78bfa;background:rgba(108,99,255,0.1);border-color:rgba(108,99,255,0.3);">
-                <i class="fas fa-tools"></i> خدماتنا
-            </div>
-            <h2 class="section-title" style="color:white;">ماذا <span class="text-gradient">نقدم لك؟</span></h2>
-            <p class="section-subtitle mx-auto" style="color:#a0aec0;">حلول برمجية شاملة تغطي جميع احتياجات عملك التقني</p>
-        </div>
-        <div class="row g-4">
-            {% for service in services %}
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
-                <div class="service-card">
-                    <div class="service-icon"><i class="{{ service.icon }}"></i></div>
-                    <h5 class="service-title">{{ service.title }}</h5>
-                    <p class="service-desc">{{ service.description|truncatechars:120 }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="text-center mt-5" data-aos="fade-up">
-            <a href="/services/" class="btn-hero-outline">استعرض كل خدماتنا <i class="fas fa-arrow-left me-1"></i></a>
         </div>
     </div>
 </section>

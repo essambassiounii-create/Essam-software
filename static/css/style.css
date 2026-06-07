@@ -875,6 +875,32 @@ body {
 }
 .stat-number { display: inline; }
 
+/* ---- Services Top Section ---- */
+.services-top-section {
+    padding: 90px 0;
+    background: var(--bg-dark);
+}
+.service-card-top {
+    display: flex;
+    flex-direction: column;
+}
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 16px;
+    transition: var(--transition);
+}
+.service-link:hover {
+    color: #a78bfa;
+    gap: 10px;
+}
+
 /* ---- Process Section ---- */
 .process-section {
     padding: 90px 0;
